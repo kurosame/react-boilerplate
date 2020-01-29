@@ -1,6 +1,6 @@
-import Parent from '@/pages/Parent'
 import { shallow } from 'enzyme'
 import React from 'react'
+import Parent from '@/containers/Parent.tsx'
 
 const wrapper = shallow(<Parent />)
 
