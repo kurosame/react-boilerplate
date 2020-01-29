@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/runtime": "^7.8.3",
-    "@kurosame/eslint-config-react": "^1.0.6",
+    "@kurosame/eslint-config-react": "^1.0.7",
     "@kurosame/stylelint-config-react": "^1.0.0",
     "@storybook/addon-actions": "^5.3.9",
     "@storybook/addon-console": "^1.2.1",

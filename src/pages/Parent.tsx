@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Child from '@/components/Child'
+import Child from '@/components/Child.tsx'
 
 const Parent = (): JSX.Element => (
   <Div>

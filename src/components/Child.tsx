@@ -8,8 +8,8 @@ import {
   getSagaCount,
   CounterActions,
   CounterState
-} from '@/modules/counter'
-import { States } from '@/modules/states'
+} from '@/modules/counter.ts'
+import { States } from '@/modules/states.ts'
 
 interface Props {
   state: { counter: CounterState }
