@@ -4,10 +4,12 @@ import Child from '@/components/Child.tsx'
 import { ADD_COUNT, GET_SAGA_COUNT } from '@/modules/counter.ts'
 import { States } from '@/modules/states.ts'
 
-const Parent = (): JSX.Element => {
+const Parent: React.FC = () => {
   const dispatch = useDispatch()
-  const addCount = useCallback(() => dispatch({ type: ADD_COUNT }), [])
-  const getSagaCount = useCallback(() => dispatch({ type: GET_SAGA_COUNT }), [])
+  const addCount = useCallback(() => dispatch({ type: ADD_COUNT }), [dispatch])
+  const getSagaCount = useCallback(() => dispatch({ type: GET_SAGA_COUNT }), [
+    dispatch
+  ])
   const counter = useSelector((s: States) => s.counter)
 
   return (

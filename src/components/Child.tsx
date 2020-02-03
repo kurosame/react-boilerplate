@@ -7,7 +7,7 @@ interface Props {
   count: number
 }
 
-const Child = (p: Props): JSX.Element => (
+const Child: React.FC<Props> = p => (
   <Div>
     <span data-test="count">{p.count}</span>
     <button data-test="add-count" onClick={(): AnyAction => p.addCount()}>
