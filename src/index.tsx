@@ -2,10 +2,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from '@/components/globals/Header.tsx'
-import Parent from '@/containers/Parent.tsx'
-import '@/modules/states.ts'
-import store from '@/store.ts'
+import Header from '@/components/globals/Header'
+import Parent from '@/containers/Parent'
+import '@/modules/states'
+import store from '@/store'
 
 render(
   <Provider store={store}>

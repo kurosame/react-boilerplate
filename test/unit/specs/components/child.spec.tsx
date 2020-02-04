@@ -1,6 +1,6 @@
 import { mount } from 'enzyme'
 import React from 'react'
-import Child from '@/components/Child.tsx'
+import Child from '@/components/Child'
 
 const addCount = jest.fn()
 const wrapper = mount(<Child addCount={addCount} count={123}></Child>)

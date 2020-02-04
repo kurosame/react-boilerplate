@@ -8,11 +8,7 @@ import {
   CallEffect,
   PutEffect
 } from 'redux-saga/effects'
-import {
-  addSagaCount,
-  GET_SAGA_COUNT,
-  CounterState
-} from '@/modules/counter.ts'
+import { addSagaCount, GET_SAGA_COUNT, CounterState } from '@/modules/counter'
 
 export function getApiSagaCount(): Promise<number> {
   return axios

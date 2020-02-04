@@ -1,6 +1,6 @@
 import { mount } from 'enzyme'
 import React from 'react'
-import Header from '@/components/globals/Header.tsx'
+import Header from '@/components/globals/Header'
 
 const wrapper = mount(<Header />)
 

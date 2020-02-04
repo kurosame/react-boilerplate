@@ -1,9 +1,10 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { action } from '@storybook/addon-actions'
 import { storiesOf } from '@storybook/react'
 import Child from '@/components/Child'
-import store from '@/store'
 
-storiesOf('Child', module)
-  .addDecorator(story => <Provider store={store}>{story()}</Provider>)
-  .add('default', () => <Child />)
+storiesOf('Child', module).add('default', () => (
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  <Child addCount={(): any => action('add-count clicked')()} count={11} />
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+))

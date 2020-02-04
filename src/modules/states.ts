@@ -1,4 +1,4 @@
-import { CounterState } from '@/modules/counter.ts'
+import { CounterState } from '@/modules/counter'
 
 export interface States {
   counter: CounterState

@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Child from '@/components/Child.tsx'
-import { ADD_COUNT, GET_SAGA_COUNT } from '@/modules/counter.ts'
-import { States } from '@/modules/states.ts'
+import Child from '@/components/Child'
+import { ADD_COUNT, GET_SAGA_COUNT } from '@/modules/counter'
+import { States } from '@/modules/states'
 
 const Parent: React.FC = () => {
   const dispatch = useDispatch()

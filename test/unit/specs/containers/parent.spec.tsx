@@ -2,9 +2,9 @@ import { mount } from 'enzyme'
 import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import Parent from '@/containers/Parent.tsx'
-import { CounterState } from '@/modules/counter.ts'
-import { States } from '@/modules/states.ts'
+import Parent from '@/containers/Parent'
+import { CounterState } from '@/modules/counter'
+import { States } from '@/modules/states'
 
 const state: { counter: CounterState } = {
   counter: { count: 12, sagaCount: 34 }

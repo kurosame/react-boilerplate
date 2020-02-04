@@ -7,9 +7,9 @@ import {
 import { composeWithDevTools } from 'redux-devtools-extension'
 import logger from 'redux-logger'
 import saga from 'redux-saga'
-import { counter } from '@/modules/counter.ts'
-import { States } from '@/modules/states.ts'
-import rootSaga from '@/sagas/index.ts'
+import { counter } from '@/modules/counter'
+import { States } from '@/modules/states'
+import rootSaga from '@/sagas/index'
 
 const sagaMiddleware = saga()
 let enhancer: StoreEnhancer
