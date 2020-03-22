@@ -9,8 +9,8 @@ interface Props {
 
 const Child: React.FC<Props> = p => (
   <Div>
-    <span data-test="count">{p.count}</span>
-    <button data-test="add-count" onClick={(): AnyAction => p.addCount()}>
+    <span data-testid="count">{p.count}</span>
+    <button data-testid="add-count" onClick={(): AnyAction => p.addCount()}>
       ADD
     </button>
   </Div>
