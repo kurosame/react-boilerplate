@@ -1,31 +1,24 @@
-import { mount } from 'enzyme'
 import React from 'react'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import Parent from '@/containers/Parent'
 import { CounterState } from '@/modules/counter'
 import { States } from '@/modules/states'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 
-const state: { counter: CounterState } = {
-  counter: { count: 12, sagaCount: 34 }
-}
-const states: States = { counter: state.counter }
-
-const wrapper = mount(
-  <Provider store={configureStore<States>()(states)}>
-    <Parent />
-  </Provider>
-)
+afterEach(cleanup)
 
 test('Match the snapshot', () => {
-  wrapper
-    .find('[data-test="add-count"]')
-    .first()
-    .simulate('click')
-  wrapper
-    .find('[data-test="add-count"]')
-    .last()
-    .simulate('click')
+  const state: { counter: CounterState } = {
+    counter: { count: 12, sagaCount: 34 }
+  }
+  const states: States = { counter: state.counter }
+  const wrapper = render(
+    <Provider store={configureStore<States>()(states)}>
+      <Parent />
+    </Provider>
+  )
+  wrapper.getAllByTestId('add-count').forEach(el => fireEvent.click(el))
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.asFragment()).toMatchSnapshot()
 })
