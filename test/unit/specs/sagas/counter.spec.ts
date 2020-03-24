@@ -4,7 +4,6 @@ import moxios from 'moxios'
 import { call, put, take } from 'redux-saga/effects'
 
 let spyErr: jest.SpyInstance
-
 beforeEach(() => {
   moxios.install()
   spyErr = jest.spyOn(console, 'error')
@@ -14,8 +13,8 @@ afterEach(() => {
   spyErr.mockReset()
 })
 
-describe('Run the getApiSagaCount', () => {
-  test('Return the sagaCount when resolved', async () => {
+describe('Run `getApiSagaCount`', () => {
+  test('Return `sagaCount` when resolved', async () => {
     moxios.stubRequest('/api', {
       status: 200,
       response: { sagaCount: 2 }
@@ -25,7 +24,7 @@ describe('Run the getApiSagaCount', () => {
     expect(console.error).not.toBeCalled()
   })
 
-  test('Output the console.error when rejected', async () => {
+  test('Output console.error when rejected', async () => {
     moxios.stubRequest('/api', {
       status: 400
     })
@@ -36,8 +35,8 @@ describe('Run the getApiSagaCount', () => {
   })
 })
 
-describe('Run the getSagaCount', () => {
-  test('Call the put', () => {
+describe('Run `getSagaCount`', () => {
+  test('Call `put`', () => {
     const saga = getSagaCount()
 
     let res = saga.next()
@@ -47,12 +46,10 @@ describe('Run the getSagaCount', () => {
     expect(res.value).toEqual(call(getApiSagaCount))
 
     res = saga.next()
-    const addSagaCountMock: jest.Mock = jest
-      .fn()
-      .mockReturnValue({
-        type: ADD_SAGA_COUNT,
-        payload: { sagaCount: undefined }
-      })
+    const addSagaCountMock: jest.Mock = jest.fn().mockReturnValue({
+      type: ADD_SAGA_COUNT,
+      payload: { sagaCount: undefined }
+    })
     expect(res.value).toEqual(put(addSagaCountMock()))
 
     res = saga.next()

@@ -1,7 +1,7 @@
 import { ADD_COUNT, ADD_SAGA_COUNT, counter } from '@/modules/counter'
 
 describe('Run when ActionType is ADD_COUNT', () => {
-  test('Set the state.count', () => {
+  test('Set `state.count`', () => {
     expect(
       counter(
         { count: 1, sagaCount: 2 },
@@ -15,7 +15,7 @@ describe('Run when ActionType is ADD_COUNT', () => {
 })
 
 describe('Run when ActionType is ADD_SAGA_COUNT', () => {
-  test('Set the state.sagaCount', () => {
+  test('Set `state.sagaCount`', () => {
     expect(
       counter(
         { count: 1, sagaCount: 2 },
