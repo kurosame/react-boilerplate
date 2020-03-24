@@ -10,7 +10,7 @@ beforeEach(() => {
 })
 afterEach(() => {
   moxios.uninstall()
-  spyErr.mockReset()
+  jest.restoreAllMocks()
 })
 
 describe('Run `getApiSagaCount`', () => {
