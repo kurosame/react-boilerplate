@@ -1,30 +1,37 @@
 import React from 'react'
 import Child from '@/components/Child'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import {
+  render,
+  fireEvent,
+  cleanup,
+  RenderResult
+} from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-afterEach(cleanup)
+let mockAddCount: jest.Mock
+let wrapper: RenderResult
+beforeEach(() => {
+  mockAddCount = jest.fn()
+  wrapper = render(<Child addCount={mockAddCount} count={123}></Child>)
+})
+afterEach(() => {
+  cleanup()
+  jest.restoreAllMocks()
+})
 
-test('Data binding props.count to count', () => {
-  const wrapper = render(<Child addCount={jest.fn()} count={123}></Child>)
-
+test('Data binding `props.count` to `count`', () => {
   expect(wrapper.getByTestId('count')).toHaveTextContent('123')
 })
 
-test('Click the add-count will call addCount', () => {
-  const addCount = jest.fn()
-  const wrapper = render(<Child addCount={addCount} count={123}></Child>)
-
-  expect(addCount.mock.calls[0]).toBeUndefined()
+test('Click `add-count` will call `addCount`', () => {
+  expect(mockAddCount.mock.calls[0]).toBeUndefined()
 
   fireEvent.click(wrapper.getByTestId('add-count'))
 
-  expect(addCount).toBeCalled()
-  expect(addCount.mock.calls[0]).toEqual([])
+  expect(mockAddCount).toBeCalled()
+  expect(mockAddCount.mock.calls[0]).toEqual([])
 })
 
 test('Match the snapshot', () => {
-  const wrapper = render(<Child addCount={jest.fn()} count={123}></Child>)
-
   expect(wrapper.asFragment()).toMatchSnapshot()
 })
