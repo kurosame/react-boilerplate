@@ -24,12 +24,9 @@ test('Data binding `props.count` to `count`', () => {
 })
 
 test('Click `add-count` will call `addCount`', () => {
-  expect(mockAddCount.mock.calls[0]).toBeUndefined()
-
   fireEvent.click(wrapper.getByTestId('add-count'))
 
   expect(mockAddCount).toBeCalled()
-  expect(mockAddCount.mock.calls[0]).toEqual([])
 })
 
 test('Match the snapshot', () => {

@@ -33,8 +33,6 @@ afterEach(() => {
 })
 
 test('Click `add-count` will call dispatch in useCallback', () => {
-  expect(mockDispatch.mock.calls[0]).toBeUndefined()
-
   wrapper.getAllByTestId('add-count').forEach(el => fireEvent.click(el))
 
   expect(mockDispatch).toBeCalled()
