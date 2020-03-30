@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '@/components/globals/Header'
+import Header from '@/components/Header'
 import { render, cleanup, RenderResult } from '@testing-library/react'
 
 let wrapper: RenderResult

@@ -7,6 +7,7 @@ let spyErr: jest.SpyInstance
 beforeEach(() => {
   moxios.install()
   spyErr = jest.spyOn(console, 'error')
+  spyErr.mockImplementation(x => x)
 })
 afterEach(() => {
   moxios.uninstall()
