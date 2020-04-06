@@ -22,7 +22,7 @@ describe('Run `getApiSagaCount`', () => {
     })
 
     expect(await getApiSagaCount()).toEqual(2)
-    expect(console.error).not.toBeCalled()
+    expect(spyErr).not.toBeCalled()
   })
 
   test('Output console.error when rejected', async () => {
@@ -31,7 +31,7 @@ describe('Run `getApiSagaCount`', () => {
     })
 
     expect(await getApiSagaCount()).toEqual(0)
-    expect(console.error).toBeCalled()
+    expect(spyErr).toBeCalled()
     expect(spyErr.mock.calls[0][0]).toEqual('GET_SAGA_COUNT API response error')
   })
 })
