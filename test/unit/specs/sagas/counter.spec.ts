@@ -26,13 +26,13 @@ describe('Run `getApiSagaCount`', () => {
   })
 
   test('Output console.error when rejected', async () => {
-    moxios.stubRequest('/api', {
-      status: 400
-    })
+    moxios.stubRequest('/api', { status: 400 })
 
     expect(await getApiSagaCount()).toEqual(0)
     expect(spyErr).toBeCalled()
-    expect(spyErr.mock.calls[0][0]).toEqual('GET_SAGA_COUNT API response error')
+    expect(spyErr.mock.calls[0][0]).toEqual(
+      'GET_SAGA_COUNT API response error: Request failed with status code 400'
+    )
   })
 })
 

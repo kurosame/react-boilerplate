@@ -14,8 +14,8 @@ export function getApiSagaCount(): Promise<number> {
   return axios
     .get('/api')
     .then(res => res.data.sagaCount)
-    .catch(() => {
-      console.error('GET_SAGA_COUNT API response error')
+    .catch((err: Error) => {
+      console.error(`GET_SAGA_COUNT API response error: ${err.message}`)
       return 0
     })
 }
