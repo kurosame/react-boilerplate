@@ -1,13 +1,25 @@
-import { ADD_COUNT, ADD_SAGA_COUNT, counter } from '@/modules/counter'
+import {
+  ADD_COUNT,
+  ADD_SAGA_COUNT,
+  counter,
+  CounterState
+} from '@/modules/counter'
+
+let wrapper: (type: string) => CounterState | undefined
+beforeEach(() => {
+  wrapper = (type): CounterState =>
+    counter(
+      { count: 1, sagaCount: 2 },
+      { type, payload: { count: 1, sagaCount: 2 } }
+    )
+})
+afterEach(() => {
+  wrapper = (): undefined => undefined
+})
 
 describe('Run when ActionType is ADD_COUNT', () => {
   test('Set `state.count`', () => {
-    expect(
-      counter(
-        { count: 1, sagaCount: 2 },
-        { type: ADD_COUNT, payload: { count: 1, sagaCount: 2 } }
-      )
-    ).toEqual({
+    expect(wrapper(ADD_COUNT)).toEqual({
       count: 2,
       sagaCount: 2
     })
@@ -16,12 +28,7 @@ describe('Run when ActionType is ADD_COUNT', () => {
 
 describe('Run when ActionType is ADD_SAGA_COUNT', () => {
   test('Set `state.sagaCount`', () => {
-    expect(
-      counter(
-        { count: 1, sagaCount: 2 },
-        { type: ADD_SAGA_COUNT, payload: { count: 1, sagaCount: 2 } }
-      )
-    ).toEqual({
+    expect(wrapper(ADD_SAGA_COUNT)).toEqual({
       count: 1,
       sagaCount: 4
     })
