@@ -18,7 +18,7 @@ context('Test', () => {
     cy.get('#root').screenshot('initial-display')
   })
 
-  it('Click the add-count, update the count', () => {
+  it('Click `add-count`, update `count`', () => {
     cy.get('[data-testid="add-count"]')
       .eq(0)
       .click()
@@ -33,7 +33,7 @@ context('Test', () => {
     cy.get('#root').screenshot('add-count')
   })
 
-  it('Click the add-count for saga, update the count for saga', () => {
+  it('Click `add-count` for saga, update `count` for saga', () => {
     cy.get('[data-testid="add-count"]')
       .eq(1)
       .click()
