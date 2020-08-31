@@ -8,8 +8,10 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@test/(.*)$': '<rootDir>/test/unit/$1'
   },
+  setupFiles: ['<rootDir>/test/unit/setup.ts'],
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.tsx',
