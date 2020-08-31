@@ -21,12 +21,12 @@ describe('Run `getApiSagaCount`', () => {
   })
 
   test('Output console.error when rejected', async () => {
-    mockAxios.get.mockRejectedValue({ message: 'rejected case' })
+    mockAxios.get.mockRejectedValue({ message: 'error' })
 
     expect(await getApiSagaCount()).toEqual(0)
     expect(spyErr).toBeCalled()
     expect(spyErr.mock.calls[0][0]).toEqual(
-      'GET_SAGA_COUNT API response error: rejected case'
+      'GET_SAGA_COUNT API response error: error'
     )
   })
 })
