@@ -2,7 +2,7 @@ references:
   commands:
     setup-docker-base: &setup-docker-base
       docker:
-        - image: kurosame/circleci-node
+        - image: circleci/node:10.17.0
     setup-docker-cypress: &setup-docker-cypress
       docker:
         - image: cypress/browsers:chrome69
