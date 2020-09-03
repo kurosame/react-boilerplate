@@ -13,11 +13,11 @@ jobs:
     <<: *setup-docker-base
     steps:
       - checkout
-      # - restore_cache:
-      #     name: Download and cache dependencies
-      #     keys:
-      #       - v1-dependencies-{{ checksum "package-lock.json" }}
-      #       - v1-dependencies-
+      - restore_cache:
+          name: Download and cache dependencies
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
