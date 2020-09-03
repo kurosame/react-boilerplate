@@ -16,8 +16,8 @@ jobs:
       - restore_cache:
           name: Download and cache dependencies
           keys:
-            - v1-dependencies{{ checksum "package-lock.json" }}
-            - v1-dependencies
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: npm ci
