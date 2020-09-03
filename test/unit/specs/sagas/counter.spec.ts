@@ -1,37 +1,32 @@
+import { call, put, take } from 'redux-saga/effects'
 import { ADD_SAGA_COUNT, GET_SAGA_COUNT } from '@/modules/counter'
 import { getApiSagaCount, getSagaCount } from '@/sagas/counter'
-import moxios from 'moxios'
-import { call, put, take } from 'redux-saga/effects'
+// ESLint error only when VSCode
+/* eslint-disable-next-line import/no-unresolved */
+import mockAxios from '@test/setup'
 
 let spyErr: jest.SpyInstance
 beforeEach(() => {
-  moxios.install()
   spyErr = jest.spyOn(console, 'error')
   spyErr.mockImplementation(x => x)
 })
-afterEach(() => {
-  moxios.uninstall()
-  jest.restoreAllMocks()
-})
+afterEach(jest.restoreAllMocks)
 
 describe('Run `getApiSagaCount`', () => {
   test('Return `sagaCount` when resolved', async () => {
-    moxios.stubRequest('/api', {
-      status: 200,
-      response: { sagaCount: 2 }
-    })
+    mockAxios.get.mockResolvedValue({ data: { sagaCount: 2 } })
 
     expect(await getApiSagaCount()).toEqual(2)
     expect(spyErr).not.toBeCalled()
   })
 
   test('Output console.error when rejected', async () => {
-    moxios.stubRequest('/api', { status: 400 })
+    mockAxios.get.mockRejectedValue({ message: 'error' })
 
     expect(await getApiSagaCount()).toEqual(0)
     expect(spyErr).toBeCalled()
     expect(spyErr.mock.calls[0][0]).toEqual(
-      'GET_SAGA_COUNT API response error: Request failed with status code 400'
+      'GET_SAGA_COUNT API response error: error'
     )
   })
 })
