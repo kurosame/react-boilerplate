@@ -69,7 +69,8 @@ module.exports = (_, argv) => ({
     new ForkTsChecker({ checkSyntacticErrors: true }),
     new HardSource(),
     new Html({
-      template: path.join(__dirname, 'src', 'index.html')
+      template: path.join(__dirname, 'src', 'index.html'),
+      scriptLoading: 'defer'
     })
   ],
   resolve: {
